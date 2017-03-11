@@ -1,0 +1,42 @@
+<script type="text/javascript">
+	setTimeout(function()
+	{
+	document.getElementById("message").innerHTML = "You see it started when one day one of my friends just got some weird artifact form some shady merchant. It was this stone that was supposed to have this creepy ability once you learn how to use it. One night while I was developing my game I accidentally pushed the stone away from the table and here I am, stuck in a world I designed. Well if the world was based on how I programed it there’s a stone in the end level that can grant any wish. That’s my only ticket here so help me out okay?";}, 500); 
+</script>
+<style type="text/css">
+	#btn:hover {
+    background-color: #A2B5CD;
+}
+</style>
+<div style="margin-top: 20px; text-align: center;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row">
+    				<div class="col-8 col-sm-8">
+       					<div style="width: 100%; height: 560px; padding: 3px; margin: 0;  background-image: url('Taddle Quest 2.jpg'); ">
+	  						<div class="row">
+				   				<div class = "col-sm-12">
+
+				   					<div style="text-align: center; position: relative; top: 75px; text-align:left;">
+				   						<p id= "message" style="font-size: 25px; color: #fff; top: 75px; font-family: Arial; "></p>
+									</div>
+							   		<div style="text-align: center; position: relative; top: 150px;">
+							   			<%= link_to page2_path do %>
+	  										<div id= "btn" style="border-radius: 25px; border: 2px solid #fff; padding: 9px; width: 100%;height: 40px; font-family: Arial; color: #fff;">CONTINUE</div>
+										<% end %>
+				   					</div>
+					   			</div>
+							</div>
+	  					</div>
+	  				</div>
+      				<div class="col-sm-3">
+						<div style="width: 100%; height: 100%; padding: 3px; margin: 0;">
+	  						<%= image_tag("Taddle Quest.jpg", size: "252x550") %>	
+	  					</div>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+	</div>
+</div>

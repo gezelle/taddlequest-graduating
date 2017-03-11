@@ -1,0 +1,406 @@
+<script type="text/javascript">
+	var weapon = "";
+	var s1 = 10;
+	var s2 = 15;
+	var s3 = 20;
+	var damage;
+	var health = 100;
+	var phealth = 100;
+	var enemyDamage = 0;
+
+
+function getEnemyDamage()
+{
+
+ 	if((health == 90) || (health == 85))
+		return s1;
+
+	else if((health == 50) || (health == 45))
+		return s2;
+
+	else if((health == 10) ||(health == 5))
+		return s3;
+
+	else{
+		return Math.floor(Math.random() * 10) + 1;
+	}
+
+}
+
+function playerDamage()
+{
+	setTimeout(function()
+	{
+
+		
+
+		if(enemyDamage == 10)
+			document.getElementById("message1").innerHTML = "<p> <b>SPECIAL ATTACK!</b> The player took <b>" + enemyDamage + "</b> damage from the enemy.</p>";
+
+		else if(enemyDamage == 15)
+			document.getElementById("message1").innerHTML = "<p> <b>SPECIAL ATTACK!</b> The player took <b>" + enemyDamage + "</b> damage from the enemy.</p>";
+		else if(enemyDamage == 20)
+			document.getElementById("message1").innerHTML = "<p> <b>SPECIAL ATTACK!</b> The player took <b>" + enemyDamage + "</b> damage from the enemy.</p>";
+
+		else
+			document.getElementById("message1").innerHTML = "<p> The player took " + enemyDamage + " damage from the enemy.</p>";
+
+		//health = 100;
+		damage = 10;
+
+		document.getElementById("hp").innerHTML = phealth;
+
+		//alert("Swordman " + damage);
+		if(phealth == 100)
+			document.getElementById("playerHealth").className = "progress-bar progress-bar-danger sword-green sword-100";
+		
+		if(phealth >= 90){
+			document.getElementById("playerHealth").className = "progress-bar sword-green sword-90";
+		}
+		else if(phealth >= 80)
+			document.getElementById("playerHealth").className = "progress-bar sword-green sword-80";
+		else if(phealth >= 70)
+			document.getElementById("playerHealth").className = "progress-bar sword-green sword-70";
+		else if(phealth >= 60)
+			document.getElementById("playerHealth").className = "progress-bar sword-orange sword-60";
+		else if(phealth >= 50)
+			document.getElementById("playerHealth").className = "progress-bar sword-orange sword-50";
+		else if(phealth >= 40)
+			document.getElementById("playerHealth").className = "progress-bar sword-orange sword-40";
+		else if(phealth >= 30)
+			document.getElementById("playerHealth").className = "progress-bar sword-red sword-30";
+		else if(phealth >= 20)
+			document.getElementById("playerHealth").className = "progress-bar sword-red sword-20";
+		else if(phealth >= 10)
+			document.getElementById("playerHealth").className = "progress-bar sword-red sword-10";
+		else if(phealth <= 0)
+		window.location.href = "/defeat";
+		
+}, 500); 
+
+}
+
+function attack(){
+			 
+
+	enemyDamage = getEnemyDamage();
+
+	if(phealth <= 0)
+			window.location.href = "/defeat";
+
+	else if((health == 90) || (health == 95))
+		phealth -= s1;
+
+	else if((health == 50) || (health == 45))
+		phealth -= s2;
+
+	else if((health == 10) || (health == 5))
+		phealth -= s3;
+
+	else
+		phealth -= enemyDamage;
+
+
+playerDamage();
+	weapon = document.getElementById("weapon_type").value;
+	
+
+
+	if(health == 100)
+		document.getElementById("ahealth").className = "progress-bar progress-bar-danger sword-green sword-100";
+
+
+	if(weapon == "Sword")
+	{
+		document.getElementById("message").innerHTML = "<p> The player attacked dealing 5 damage to the enemy.</p>";
+
+
+		damage = 5;
+		health -= damage;
+
+		document.getElementById("enemy").innerHTML = health;
+
+		if(health == 95)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-95";
+		else if(health == 90)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-90";
+		else if(health == 85)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-85";
+		else if(health == 80)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-80";
+		else if(health == 75)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-75";
+		else if(health == 70)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-70";
+		else if(health == 65)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-65";
+		else if(health == 60)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-60";
+		else if(health == 55)
+			document.getElementById("ahealth").className = "progress-bar sword-orange sword-55";
+		else if(health == 50)
+			document.getElementById("ahealth").className = "progress-bar sword-orange sword-50";
+		else if(health == 45)
+			document.getElementById("ahealth").className = "progress-bar sword-orange sword-45";
+		else if(health == 40)
+			document.getElementById("ahealth").className = "progress-bar sword-orange sword-40";
+		else if(health == 35)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-35";
+		else if(health == 30)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-30";
+		else if(health == 25)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-25";
+		else if(health == 20)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-20";
+		else if(health == 15)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-15";
+		else if(health == 10)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-10";
+		else if(health == 5)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-5";
+		else if(health == 0){
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-0";
+		
+			window.location.href = "/victory";
+		}
+	}
+	else if(weapon == "Gun")
+	{
+
+		document.getElementById("message").innerHTML = "<p> The party attacked dealing 10 damage to the enemy.</p>";
+
+		if(health == 0)
+		{
+			window.location.href = "/victory";
+		}
+
+		//health = 100;
+		damage = 10;
+
+		//alert("Swordman " + damage);
+		health -= damage;
+
+		document.getElementById("enemy").innerHTML = health;
+
+		if(health >= 90){
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-90";
+		}else if(health >= 80)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-80";
+		else if(health >= 70)
+			document.getElementById("ahealth").className = "progress-bar sword-green sword-70";
+		else if(health >= 60)
+			document.getElementById("ahealth").className = "progress-bar sword-orange sword-60";
+		else if(health >= 50)
+			document.getElementById("ahealth").className = "progress-bar sword-orange sword-50";
+		else if(health >= 40)
+			document.getElementById("ahealth").className = "progress-bar sword-orange sword-40";
+		else if(health >= 30)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-30";
+		else if(health >= 20)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-20";
+		else if(health >= 10)
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-10";
+		else if(health >= 0){
+			document.getElementById("ahealth").className = "progress-bar sword-red sword-10";
+			window.location.href = "/victory";
+		}
+		
+	
+	}
+	
+}
+
+
+</script>
+
+<style type="text/css">
+	.sword-green{
+		background-color: green;
+	}
+	.sword-orange{
+		background-color: orange;
+	}
+	.sword-red{
+		background-color: red;
+	}
+	.sword-100{		
+		width: 100%;
+	}
+	.sword-90{
+		width: 90%;
+	}
+	.sword-80{
+		width: 80%;	
+	}
+	.sword-70{
+		width: 70%;	
+	}
+	.sword-60{
+		width: 60%;	
+	}
+	.sword-50{
+		width: 50%;	
+	}
+	.sword-40{
+		width: 40%;	
+	}
+	.sword-30{
+		width: 30%;	
+	}
+	.sword-20{
+		width: 20%;	
+	}
+	.sword-10{
+		width: 10%;	
+	}
+	.sword-0{
+		width: 0%;	
+	}
+	.sword-5{		
+		width: 5%;
+	}
+	.sword-15{
+		width: 15%;
+	}
+	.sword-25{
+		width: 25%;	
+	}
+	.sword-35{
+		width: 35%;	
+	}
+	.sword-45{
+		width: 45%;	
+	}
+	.sword-55{
+		width: 55%;	
+	}
+	.sword-65{
+		width: 65%;	
+	}
+	.sword-75{
+		width: 75%;	
+	}
+	.sword-85{
+		width: 85%;	
+	}
+	.sword-95{
+		width: 95%;	
+	}
+
+</style>
+<style type="text/css">
+	#btn:hover {
+    background-color: #A2B5CD;
+}
+</style>
+<div style="margin-top: 20px;">
+	<div class="container">
+		<div class= "row">
+			<div class="col-sm-12">
+				<div class="row">
+					<div class = "col-3 col-sm-3">
+				    	<div style="width: 100%; height: 500px; padding: 3px; border: 3px solid white; margin: 0;">
+					    	<h5 style="color: #fff;">Ex Raid</h5>
+					    	<h5 style="color:#fff;">Level 1</h5>`
+				    		<div style="position:absolute; bottom:50px; width:85%; height:75px; text-align:center; color: #fff;">
+				    			<%= link_to inventory_path do %>
+	  								<div id= "btn" style="border-radius: 25px; border: 2px solid #fff; padding: 9px; width: 100%;height: 40px; font-family: Arial; color: #fff;">Inventory</div>
+								<% end %>
+							<br>
+							
+								<%= link_to status_path do %>
+	  								<div id= "btn" style="border-radius: 25px; border: 2px solid #fff; padding: 9px; width: 100%;height: 40px; font-family: Arial; color: #fff;">Status</div>
+								<% end %>
+				    		
+				    		</div>
+					  	</div>
+					</div>
+	    			<div class="col-8 col-sm-8">
+	       				<div style="width: 100%; height: 500px; padding: 3px; border: 3px solid white; margin: 0;">
+	       					<div class="row">
+	       						<div class="col-sm-2" style="margin: 15px;">
+									<%= image_tag("Ex Raid - Combat.png", size: "120x200") %>	
+								</div>
+								<div class="col-sm-2" style=" margin: 15px; visibility: hidden;">
+									<%= image_tag("Courageous - Combat.png", size: "120x200") %>	
+								</div>
+								<div class="col-sm-2" style=" margin: 15px; visibility: hidden;">
+									<%= image_tag("Gunner - Combat.png", size: "120x200") %>	
+								</div> 
+								<div class="col-sm-2" style="margin-left: 20px;">
+									<%= image_tag("Hazardous Zombie.png", size: "200x200") %>
+								<div class="col-sm-2" style="margin-left: 20px;">
+							</div>
+						</div>
+	       			</div>
+			 		<div class="row">
+	       				<div class="col-sm-2">
+	       					<button type="button" class="btn btn-default btn-lg" style="margin-top: 5px;"> Ex Raid - 
+	       						<select class = "form-control" id = "weapon_type"> <% @weapons.each do |weapon| %>
+									<option value = "<%= weapon.name %>"><%= weapon.name %></option>
+	     							<% end %>
+	         					</select>
+	                 		</button>
+						</div>
+						<div class="col-sm-2" style="visibility: hidden;">
+	       					<button type="button" class="btn btn-default btn-lg" style="margin-top: 5px;"> Ex Raid - 
+	       						<select class = "form-control" id = "weapon_type"> <% @weapons.each do |weapon| %>
+									<option value = "<%= weapon.name %>"><%= weapon.name %></option>
+	     							<% end %>
+	         					</select>
+	                 		</button>
+						</div>
+						<div class="col-sm-2" style="visibility: hidden;">
+	       					<button type="button" class="btn btn-default btn-lg" style="margin-top: 5px;"> Ex Raid - 
+	       						<select class = "form-control" id = "weapon_type"> <% @weapons.each do |weapon| %>
+									<option value = "<%= weapon.name %>"><%= weapon.name %></option>
+	     							<% end %>
+	         					</select>
+	                 		</button>
+						</div>
+						<div class="col-sm-2">
+	       				
+						</div>
+
+						
+						<div class="col-sm-3" align="right" style="text-align: center;">
+							<div class="progress">
+								<div id = "ahealth" class="progress-bar sword-100" role="progressbar"><span id="enemy">100</span>/100</div>
+							</div>
+
+							
+							
+							<button class="btn btn-primary" onclick = "attack(); return false;">Attack</button>
+	       				</div>
+	       			</div>
+	       			<div class="row">
+	       				<div class="col-sm-10" id ="message" style="margin-left:10px; color: white; text-align: left; top: 100px;">
+	       				</div>
+	       				<div class="col-sm-10" id ="message1" style="margin-left:10px; color:red; text-align: left; top: 100px;">
+	       				</div>
+	       			</div>
+	       		</div>
+			</div>
+			<div class= "col- 12 col-sm-11">
+				<div style="width: 100%; padding: 3px; border: 3px solid white; margin-top: 15px;">
+					<div class="row">
+						<div class="col-sm-2">
+							<%= image_tag("Ex Raid small.png", size: "100x100") %>	
+						</div>
+						<div class="col-sm-2">
+							<h4 style="color: white;">HP:</h4><br>
+							<h4 style="color: white;">Status:</h4>
+						</div>
+						<div class="col-sm-2">
+							<div class="progress" style="margin-top: 10px;">
+							<div class="progress-bar progress-bar-danger sword-green sword-100" id = "playerHealth" role="progressbar">
+								<span id="hp">100</span>/100
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>		
+	

@@ -1,0 +1,20 @@
+<h1>Weapons#edit</h1>
+<p>Find me in app/views/weapons/edit.html.erb</p>
+<h1>Edit Employee</h1>
+<%= form_for(@weapon, :url=>{:action => 'update'}) do |f| %>
+	<p>
+		<%= f.label :name %><br>
+		<%= f.text_field :name %>
+	</p>
+
+	<p>
+		<%= f.label :value %><br>
+		<%= f.text_field :value %>
+	</p>
+
+	
+
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

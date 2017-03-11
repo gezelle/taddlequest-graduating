@@ -1,0 +1,16 @@
+<h1>Weapons#show</h1>
+<p>Find me in app/views/weapons/show.html.erb</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @weapon.name %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @weapon.value %>
+</p>
+
+
+<a href="/weapons/<%= @weapon.id %>/edit">Edit</a>
+<a href="/weapons/<%= @weapon.id %>/delete">Delete</a>
